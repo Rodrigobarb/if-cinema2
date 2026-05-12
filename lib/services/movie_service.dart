@@ -8,8 +8,8 @@ class MovieService {
   Future<MovieModel?> getMovieDetails() async {
     try {
       final response = await http.get(
-        Uri.parse('$url/movie/11?language=pt-BR'),
-        headers: {'Authorization': 'Bearer $apiKey'},
+        Uri.parse('${Env.url}/movie/11?language=pt-BR'),
+        headers: {'Authorization': 'Bearer ${Env.apiKey}'},
       );
 
       if (response.statusCode == 200) {
@@ -24,22 +24,21 @@ class MovieService {
     }
   }
 
-  Future<List<MovieModel>> getTopRatedMovie() async {
+  Future<List<MovieModel>> getPopularMovies() async {
     try {
       final response = await http.get(
-        Uri.parse('$url/movie/top_rated?language=pt-BR'),
-        headers: {'Authorization': 'Bearer $apiKey'},
+        Uri.parse('${Env.url}/movie/popular?language=pt-BR'),
+        headers: {'Authorization': 'Bearer ${Env.apiKey}'},
       );
 
-      if (response.statusCode == 200) {
+      if(response.statusCode == 200){
         final Map<String, dynamic> mapBody = jsonDecode(response.body);
+        final List<Map<String, dynamic>> listaResult = mapBody['results'];
 
-        final List<Map<String, dynamic>> data = mapBody['results'];
-
-        return data.map((json) => MovieModel.fromJson(json)).toList();
+        return listaResult.map((map) => MovieModel.fromJson(map)).toList();
       }
     } catch (e) {
-      return [];
+      throw Exception();
     }
     return [];
   }
