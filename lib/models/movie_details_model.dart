@@ -1,4 +1,4 @@
-class MovieModel {
+class MovieDetailsModel {
   int id;
   String title;
   String overview;
@@ -13,7 +13,7 @@ class MovieModel {
   String get posterUrl => '$_imageBase$posterPath';
   String get backdropUrl => '$_backdropBase$backdropPath';
 
-  MovieModel({
+  MovieDetailsModel({
     required this.id,
     required this.title,
     required this.overview,
@@ -23,15 +23,15 @@ class MovieModel {
     required this.releaseDate,
   });
 
-  factory MovieModel.fromJson(Map<String, dynamic> json) {
-    return MovieModel(
+  factory MovieDetailsModel.fromJson(Map<String, dynamic> json) {
+    return MovieDetailsModel(
       id: json['id'],
-      title: json['title'] ?? '',
-      overview: json['overview'] ?? '',
-      posterPath: json['poster_path'] ?? '',
-      backdropPath: json['backdrop_path'] ?? '',
+      title: json['title'],
+      overview: json['overview'],
+      posterPath: json['poster_path'],
+      backdropPath: json['backdrop_path'],
       voteAverage: (json['vote_average'] as num).toDouble(),
-      releaseDate: json['release_date'] ?? '',
+      releaseDate: json['release_date'],
     );
   }
 }
