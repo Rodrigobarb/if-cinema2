@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/models/movie_details_model.dart';
+import 'package:myapp/models/movie_model.dart';
 import 'package:myapp/services/movie_service.dart';
 
 class DetailsPage extends StatefulWidget {
@@ -12,7 +12,7 @@ class DetailsPage extends StatefulWidget {
 
 class _DetailsPageState extends State<DetailsPage> {
   final _service = MovieService();
-  late Future<MovieDetailsModel?> _movie;
+  late Future<MovieModel?> _movie;
 
   @override
   void initState() {
@@ -24,7 +24,7 @@ class _DetailsPageState extends State<DetailsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF1C1C1E),
-      body: FutureBuilder<MovieDetailsModel?>(
+      body: FutureBuilder<MovieModel?>(
         future: _movie,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
@@ -80,7 +80,7 @@ class _DetailsPageState extends State<DetailsPage> {
                                 ),
                                 child: Row(
                                   children: const [
-                                    Text('Watch Trailer', style: TextStyle(color: Colors.white, fontSize: 12)),
+                                    Text('Ver Trailer', style: TextStyle(color: Colors.white, fontSize: 12)),
                                     SizedBox(width: 4),
                                     Icon(Icons.play_circle_outline, color: Colors.white, size: 16),
                                   ],
@@ -93,23 +93,23 @@ class _DetailsPageState extends State<DetailsPage> {
                           const SizedBox(height: 12),
                           Row(
                             children: [
-                              _infoColumn('Censor Rating', 'A'),
-                              _infoColumn('Duration', '1hr:38min'),
+                              _infoColumn('Classificação', 'A'),
+                              _infoColumn('Duração', '1hr:38min'),
                               _infoColumn(
-                                'Release date',
+                                'Lançamento',
                                 movie.releaseDate.isNotEmpty ? movie.releaseDate : '-',
                               ),
                             ],
                           ),
                           const SizedBox(height: 16),
-                          const Text('Available in language\'s', style: TextStyle(color: Colors.white54, fontSize: 12)),
+                          const Text('Idiomas disponíveis', style: TextStyle(color: Colors.white54, fontSize: 12)),
                           const SizedBox(height: 2),
-                          const Text('English', style: TextStyle(color: Colors.white, fontSize: 13)),
+                          const Text('Português', style: TextStyle(color: Colors.white, fontSize: 13)),
                           const SizedBox(height: 16),
                           const Divider(color: Colors.white12),
                           const SizedBox(height: 12),
                           const Text(
-                            'Story Plot',
+                            'Sinopse',
                             style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(height: 8),
@@ -121,7 +121,7 @@ class _DetailsPageState extends State<DetailsPage> {
                           const Divider(color: Colors.white12),
                           const SizedBox(height: 12),
                           const Text(
-                            'Cast',
+                            'Elenco',
                             style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(height: 12),
@@ -148,7 +148,7 @@ class _DetailsPageState extends State<DetailsPage> {
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
                     ),
                     child: const Text(
-                      'Book Tickets',
+                      'Adicionar aos favoritos',
                       style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                   ),
@@ -161,7 +161,7 @@ class _DetailsPageState extends State<DetailsPage> {
     );
   }
 
-  Widget _buildBackdrop(BuildContext context, MovieDetailsModel movie) {
+  Widget _buildBackdrop(BuildContext context, MovieModel movie) {
     return Stack(
       children: [
         Image.network(

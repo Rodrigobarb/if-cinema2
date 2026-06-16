@@ -52,7 +52,7 @@ class HomeBanner extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: const [
                         Text(
-                          'Watch Trailer',
+                          'Ver Trailer',
                           style: TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.w600),
                         ),
                         SizedBox(width: 6),

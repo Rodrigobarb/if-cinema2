@@ -56,14 +56,14 @@ class _HomePageState extends State<HomePage> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               const Text(
-                                'Recommended Movies',
+                                'Filmes Recomendados',
                                 style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
                               ),
                               GestureDetector(
                                 onTap: () {},
                                 child: Row(
                                   children: const [
-                                    Text('See All', style: TextStyle(color: Color(0xFFE53935), fontSize: 13)),
+                                    Text('Ver Todos', style: TextStyle(color: Color(0xFFE53935), fontSize: 13)),
                                     Icon(Icons.chevron_right, color: Color(0xFFE53935), size: 16),
                                   ],
                                 ),
@@ -109,7 +109,7 @@ class _HomePageState extends State<HomePage> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _navItem(0, Icons.movie, 'Movies'),
+          _navItem(0, Icons.movie, 'Filmes'),
           _navItem(1, Icons.play_circle_outline, null),
           _navItem(2, Icons.bookmark_border, null),
           _navItem(3, Icons.more_horiz, null),
